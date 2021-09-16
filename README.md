@@ -1,6 +1,6 @@
 # simple-mac-clipboard
 
-> simple mac clipboard for node &amp; electron
+> simple mac clipboard for node &amp; Electron or Node.js apps
 
 [![npm version](https://img.shields.io/npm/v/simple-mac-clipboard.svg?style=flat-square)](https://www.npmjs.com/package/simple-mac-clipboard)
 [![npm downloads](https://img.shields.io/npm/dm/simple-mac-clipboard.svg?style=flat-square)](https://www.npmjs.com/package/simple-mac-clipboard)

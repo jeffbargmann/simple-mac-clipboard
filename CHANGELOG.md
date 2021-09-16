@@ -3,6 +3,7 @@
 ## v1.1.0 2021-09-16
 
 - add getChangeCount for pasteboard change detection
+- remove ambiguity from description; library works with both Electron and vanilla Node.js
 
 ## v1.0.1 2021-01-21
 
