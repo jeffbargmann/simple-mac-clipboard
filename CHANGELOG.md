@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.1.0 2021-09-16
+
+- add getChangeCount for pasteboard change detection
+
 ## v1.0.1 2021-01-21
 
 - update prebuild-install to latest, in order to support electron@10

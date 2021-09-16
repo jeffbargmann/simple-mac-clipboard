@@ -19,6 +19,14 @@ export function clear(): void
 
 clear the clipboard
 
+### `getChangeCount`
+
+```ts
+export function getChangeCount(): Number
+```
+
+read change-count status of clipboard
+
 ### readBuffer & writeBuffer
 
 ```ts

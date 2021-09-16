@@ -17,7 +17,7 @@ const tryDebug = () => {
   }
 }
 const bin = tryRelease() || tryDebug() || require('bindings')('simple_mac_clipboard')
-const {path, clearContents, dataForType, setData} = bin
+const {path, clearContents, getChangeCount, dataForType, setData} = bin
 
 // alias
 const clear = clearContents
@@ -37,6 +37,7 @@ Object.assign(module.exports, {
   path, // the .node path
 
   clear,
+  getChangeCount,
   readBuffer,
   writeBuffer,
   readText,

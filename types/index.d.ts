@@ -1,5 +1,6 @@
 // alias
 export function clear(): void
+export function getChangeCount(): Number
 
 // buffer
 export function readBuffer(format: string): Buffer

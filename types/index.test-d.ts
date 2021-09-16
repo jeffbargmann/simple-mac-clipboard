@@ -2,6 +2,7 @@ import {expectType} from 'tsd'
 import * as clip from '..'
 const {
   clear,
+  getChangeCount,
   readBuffer,
   readText,
   writeBuffer,
@@ -11,6 +12,8 @@ const {
 } = clip
 
 expectType<void>(clip.clear())
+
+expectType<Number>(clip.getChangeCount())
 
 expectType<Buffer>(readBuffer(FORMAT_PLAIN_TEXT))
 expectType<string>(readText(FORMAT_PLAIN_TEXT))

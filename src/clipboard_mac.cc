@@ -30,6 +30,15 @@ Value clearContents(const CallbackInfo &info) {
   return info.Env().Undefined();
 }
 
+Value getChangeCount(const CallbackInfo &info) {
+#ifdef DEBUG
+  NSLog(@"getChangeCount ...");
+#endif
+
+  // get
+  return Napi::Number::New(info.Env(), [NSPasteboard.generalPasteboard changeCount]);
+}
+
 Value setData(const CallbackInfo &info) {
   Env env = info.Env();
 
@@ -112,6 +121,10 @@ Object Init(Env env, Object exports) {
   // clear
   exports.Set(String::New(env, "clearContents"),
               Function::New(env, clearContents));
+
+  // get
+  exports.Set(String::New(env, "getChangeCount"),
+              Function::New(env, getChangeCount));
 
   // write
   exports.Set(String::New(env, "setData"), Function::New(env, setData));

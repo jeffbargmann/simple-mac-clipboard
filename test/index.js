@@ -11,4 +11,8 @@ describe('write', () => {
     clip.clear()
     clipboard.readText().length.should.equal(0)
   })
+
+  it('.getChangeCount ', () => {
+    clipboard.readText().length.should.not.equal(0)
+  })
 })
