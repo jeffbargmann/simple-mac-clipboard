@@ -106,6 +106,10 @@ Value dataForType(const CallbackInfo &info) {
 
   NSString *dataType = getStringArg(info, 0);
   NSData *data = [NSPasteboard.generalPasteboard dataForType:dataType];
+  if(!data) {
+    [pool drain];
+    return env.Null();
+  }
   uint8_t *pData = (uint8_t *)data.bytes;
   uint32_t len = (uint32_t)data.length;
   Napi::Buffer<uint8_t> buf = Napi::Buffer<uint8_t>::Copy(env, pData, len);
