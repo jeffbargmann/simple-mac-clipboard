@@ -26,7 +26,7 @@ const writeBuffer = setData
 
 // convenient
 // format is the first parameter & required
-const readText = format => readBuffer(format).toString('utf8')
+const readText = format => readBuffer(format)?.toString('utf8')
 const writeText = (format, text) => writeBuffer(format, Buffer.from(text))
 
 // format
