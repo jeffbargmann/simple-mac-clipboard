@@ -134,7 +134,7 @@ Value hasBufferForFormat(const CallbackInfo &info) {
 
   NSString *dataType = getStringArg(info, 0);
   NSArray<NSString *> *dataTypeArray = @[dataType];
-  BOOL success = [NSPasteboard.generalPasteboard availableTypeFromArray::dataTypeArray];
+  BOOL success = [NSPasteboard.generalPasteboard availableTypeFromArray:dataTypeArray];
 
   [pool drain];
   return Napi::Boolean::New(env, success);
