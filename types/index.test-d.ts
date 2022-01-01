@@ -3,6 +3,7 @@ import * as clip from '..'
 const {
   clear,
   getChangeCount,
+  hasBufferForFormat,
   readBuffer,
   readText,
   writeBuffer,
@@ -14,6 +15,7 @@ const {
 expectType<void>(clip.clear())
 
 expectType<Number>(clip.getChangeCount())
+expectType<boolean>(clip.hasBufferForFormat())
 
 expectType<Buffer>(readBuffer(FORMAT_PLAIN_TEXT))
 expectType<string>(readText(FORMAT_PLAIN_TEXT))

@@ -117,6 +117,28 @@ Value dataForType(const CallbackInfo &info) {
   [pool drain];
   return buf;
 }
+
+Value hasBufferForFormat(const CallbackInfo &info) {
+  Env env = info.Env();
+
+  if (info.Length() < 1) {
+    Napi::Error::New(env, "wrong number of arguments")
+        .ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  if (!info[0].IsString()) {
+    Napi::Error::New(env, "string expected").ThrowAsJavaScriptException();
+    return env.Undefined();
+  }
+  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+  NSString *dataType = getStringArg(info, 0);
+  NSArray<NSString *> *dataTypeArray = @[dataType];
+  BOOL success = [NSPasteboard.generalPasteboard availableTypeFromArray::dataTypeArray];
+
+  [pool drain];
+  return Napi::Boolean::New(env, success);
+}
 #endif
 
 Object Init(Env env, Object exports) {
@@ -135,6 +157,7 @@ Object Init(Env env, Object exports) {
 
   // read
   exports.Set(String::New(env, "dataForType"), Function::New(env, dataForType));
+  exports.Set(String::New(env, "hasBufferForFormat"), Function::New(env, hasBufferForFormat));
 #endif
 
   return exports;

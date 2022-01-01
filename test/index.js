@@ -15,4 +15,8 @@ describe('write', () => {
   it('.getChangeCount ', () => {
     clipboard.readText().length.should.not.equal(0)
   })
+
+  it('.hasBufferForFormat ', () => {
+    //TODO clipboard.readText().length.should.not.equal(0)
+  })
 })

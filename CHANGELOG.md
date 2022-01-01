@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.1.1 2021-12-31
+
+- add hasBufferForFormat for rudimentary pasteboard content detection
+
 ## v1.1.0 2021-09-16
 
 - add getChangeCount for pasteboard change detection
