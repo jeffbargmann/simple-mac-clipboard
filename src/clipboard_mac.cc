@@ -90,18 +90,13 @@ Value setData(const CallbackInfo &info) {
   }
   else if(true)
   {
-    //NSString *tempFilePath1 = @"/Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
-    //NSString *tempFilePath = @"file:///Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
-    //NSURL *tempFileUrl = [NSURL URLWithString:tempFilePath];
-
-    //NSError *error;
-    //BOOL successWrite = [data writeToURL:tempFileUrl atomically:true];
- 
- 
+    NSString *tempFileStringPath = @"/Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
+    NSString *tempFileStringUrl = @"file:///Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
+    NSURL *tempFileUrl = [NSURL URLWithString:tempFileStringUrl];
  
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
       [pboard clearContents];
-    [pboard writeFileContents:@"/Users/jeff/iMessage/clipboard.gif"];
+    [pboard writeObjects:@[tempFileUrl]];
   }
   else if(true)
   {
