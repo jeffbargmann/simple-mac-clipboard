@@ -90,24 +90,19 @@ Value setData(const CallbackInfo &info) {
   }
   else if(true)
   {
-    NSString *tempFilePath1 = @"/Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
-    NSString *tempFilePath = @"file:///Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
-    NSURL *tempFileUrl = [NSURL URLWithString:tempFilePath];
+    //NSString *tempFilePath1 = @"/Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
+    //NSString *tempFilePath = @"file:///Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
+    //NSURL *tempFileUrl = [NSURL URLWithString:tempFilePath];
 
-    NSError *error;
-    BOOL successWrite = [data writeToURL:tempFileUrl atomically:true];
- 
-    [NSPasteboard.generalPasteboard clearContents];
+    //NSError *error;
+    //BOOL successWrite = [data writeToURL:tempFileUrl atomically:true];
  
  
- // NSMutableArray* fileList = [NSMutableArray arrayWithCapacity:1];
+ 
   NSPasteboard* pasteboard = [NSPasteboard generalPasteboard];
-  //  [fileList addObject:tempFilePath1];
-  [pasteboard declareTypes:[NSArray arrayWithObject:NSURLPboardType] owner:nil];
-  //[pasteboard setPropertyList:fileList forType:NSPasteboardTypeFileURL];
-[tempFileUrl writeToPasteboard:pasteboard];
-//    [NSPasteboard.generalPasteboard declareTypes:@[ @"public.file-url" ] owner:nil];
-  //  success = [NSPasteboard.generalPasteboard writeObjects:tempFileUrl forType:@"public.file-url"];
+      [pasteboard clearContents];
+[pboard declareTypes:[NSArray arrayWithObject:NSURLPboardType] owner:nil];
+[[NSURL fileURLWithPath:@"/Users/jeff/clipboard.gif"] writeToPasteboard:pboard];
   }
   else if(true)
   {
