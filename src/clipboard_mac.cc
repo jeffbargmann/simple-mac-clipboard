@@ -90,7 +90,31 @@ Value setData(const CallbackInfo &info) {
   else
   {
     //NSDictionary *dict = (__bridge NSString *)UTTypeCopyDeclaration(CFSTR(format));
-
+/*
+NSDictionary *dict = (__bridge NSString *)UTTypeCopyDeclaration(CFSTR(format));
+{
+UTTypeConformsTo =     (
+"public.data",
+"public.composite-content"
+);
+UTTypeDescription = "Portable Document Format (PDF)";
+UTTypeIconFiles =     (
+"PDF~iphone.png",
+"PDF@2x~iphone.png",
+"PDFStandard~ipad.png",
+"PDFStandard@2x~ipad.png",
+"PDFScalable~ipad.png",
+"PDFScalable@2x~ipad.png"
+);
+UTTypeIdentifier = "com.adobe.pdf";
+UTTypeTagSpecification =     {
+"com.apple.nspboard-type" = "Apple PDF pasteboard type";
+"com.apple.ostype" = "PDF ";
+"public.filename-extension" = pdf;
+"public.mime-type" = "application/pdf";
+};
+}
+*/
     NSString *tempFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
     NSURL *tempFileUrl = [NSURL fileURLWithPath:tempFilePath];
 
