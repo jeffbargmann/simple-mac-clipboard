@@ -92,14 +92,17 @@ Value setData(const CallbackInfo &info) {
   {
     NSString *tempFileStringPath = @"/Users/jeff/iMessage/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
     NSString *tempFileStringUrl = @"file:///Users/jeff/iMessage/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
-    NSURL *tempFileUrl = [NSURL URLWithString:tempFileStringUrl];
+    NSURL *tempFileUrlFromUrl = [NSURL URLWithString:tempFileStringUrl];
     NSURL *tempFileUrlFromPath = [NSURL fileURLWithPath:tempFileStringPath];
 
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
       [pboard clearContents];
   NSPasteboardItem *pbitem = [[NSPasteboardItem alloc] init];
    [pbitem setData:data forType:(__bridge NSString*)kUTTypeGIF];
-   [pbitem setData:[tempFileStringUrl dataUsingEncoding:NSUTF8StringEncoding] forType:@"public.file-url"];
+   //[pbitem setData:[tempFileStringUrl dataUsingEncoding:NSUTF8StringEncoding] forType:@"public.file-url"];
+   //[pbitem setData:[tempFileStringUrl dataUsingEncoding:NSUTF8StringEncoding] forType:@"public.url"];
+   [pbitem setData:[NSData dataWithContentsOfURL:tempFileUrlFromUrl] forType:@"public.file-url"];
+   [pbitem setData:[NSData dataWithContentsOfURL:tempFileUrlFromUrl] forType:@"public.url"];
     [pboard writeObjects:@[pbitem]];
   }
   else if(true)
