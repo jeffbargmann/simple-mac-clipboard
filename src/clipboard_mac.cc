@@ -101,8 +101,8 @@ Value setData(const CallbackInfo &info) {
  
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
       [pboard clearContents];
-[pboard declareTypes:[NSArray arrayWithObject:NSURLPboardType] owner:nil];
-[[NSURL fileURLWithPath:@"/Users/jeff/clipboard.gif"] writeToPasteboard:pboard];
+[pboard declareTypes:@[NSURLPboardType] owner:nil];
+[[NSURL URLWithString:@"file:///Users/jeff/clipboard.gif"] writeToPasteboard:pboard];
   }
   else if(true)
   {
