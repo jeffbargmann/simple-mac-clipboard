@@ -77,11 +77,12 @@ Value setData(const CallbackInfo &info) {
   NSLog(@"setData: format=%@, buf.length=%zu", format, length);
 #endif
 
+  BOOL success = false;
   BOOL isText = [format isEqualToString:@"public.utf8-plain-text"]];
   if(isText)
   {
     [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
-    BOOL success = [NSPasteboard.generalPasteboard setData:data forType:format];
+    success = [NSPasteboard.generalPasteboard setData:data forType:format];
 #ifdef DEBUG
     NSLog(@"writeTextToClipboard: result = %i", success);
 #endif
@@ -94,7 +95,7 @@ Value setData(const CallbackInfo &info) {
     NSURL *tempFileUrl = [NSURL fileURLWithPath:tempFilePath];
 
     NSError *error;
-    BOOL success = [data writeToURL:tempFileUrl options:NSDataWritingAtomic error:&error];
+    success = [data writeToURL:tempFileUrl options:NSDataWritingAtomic error:&error];
 
     [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
     [NSPasteboard.generalPasteboard writeObjects:@[ tempFileUrl ]];
