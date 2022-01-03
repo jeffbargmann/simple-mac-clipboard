@@ -78,7 +78,7 @@ Value setData(const CallbackInfo &info) {
 #endif
 
   BOOL success = false;
-  BOOL isText = [format isEqualToString:@"public.utf8-plain-text"]];
+  BOOL isText = [format isEqualToString:@"public.utf8-plain-text"];
   if(isText)
   {
     [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
