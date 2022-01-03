@@ -93,12 +93,12 @@ Value setData(const CallbackInfo &info) {
     NSString *tempFileStringPath = @"/Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
     NSString *tempFileStringUrl = @"file:///Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
     NSURL *tempFileUrl = [NSURL URLWithString:tempFileStringUrl];
- 
+    NSURL *tempFileUrlFromPath = [NSURL fileURLWithPath:tempFileStringPath];
+
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
-      [pboard clearContents];
-  NSPasteboardItem *pbitem = [[NSPasteboardItem alloc] init];
-   [pbitem setData:data forType:(__bridge NSString*)kUTTypeGIF];
-    [pboard writeObjects:@[pbitem]];
+  //NSPasteboardItem *pbitem = [[NSPasteboardItem alloc] init];
+   //[pbitem setData:data forType:(__bridge NSString*)kUTTypeGIF];
+    [pboard writeObjects:@[tempFileUrlFromPath]];
   }
   else if(true)
   {
