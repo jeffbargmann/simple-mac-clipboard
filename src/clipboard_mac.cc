@@ -101,10 +101,10 @@ Value setData(const CallbackInfo &info) {
    [pbitem setData:data forType:(__bridge NSString*)kUTTypeGIF];
    //[pbitem setData:[tempFileStringUrl dataUsingEncoding:NSUTF8StringEncoding] forType:@"public.file-url"];
    //[pbitem setData:[tempFileStringUrl dataUsingEncoding:NSUTF8StringEncoding] forType:@"public.url"];
-//   [pbitem setData:[NSData dataWithContentsOfURL:tempFileUrlFromUrl] forType:@"public.file-url"];
-//   [pbitem setData:[NSData dataWithContentsOfURL:tempFileUrlFromUrl] forType:@"public.url"];
-   [pbitem setString:@"file:///Users/Jeff/Library/Messages/Attachments/ee/14/38F467FE-D269-413D-B2D6-07BB0C260C89/clipboard.gif" forType:@"public.file-url"];
-   [pbitem setString:@"file:///Users/Jeff/Library/Messages/Attachments/ee/14/38F467FE-D269-413D-B2D6-07BB0C260C89/clipboard.gif" forType:@"public.url"];
+//   [pbitem setData:[NSData dataWithContentsOfURL:tempFileUrlFromPath] forType:@"public.file-url"];
+//   [pbitem setData:[NSData dataWithContentsOfURL:tempFileUrlFromPath] forType:@"public.url"];
+   [pbitem setString:@"/Users/Jeff/Library/Messages/Attachments/ee/14/38F467FE-D269-413D-B2D6-07BB0C260C89/clipboard.gif" forType:@"public.file-url"];
+   [pbitem setString:@"/Users/Jeff/Library/Messages/Attachments/ee/14/38F467FE-D269-413D-B2D6-07BB0C260C89/clipboard.gif" forType:@"public.url"];
 
     [pboard writeObjects:@[pbitem]];
   }
