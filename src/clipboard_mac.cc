@@ -81,6 +81,7 @@ Value setData(const CallbackInfo &info) {
   BOOL isText = [format isEqualToString:@"public.utf8-plain-text"];
   if(isText)
   {
+    [NSPasteboard.generalPasteboard clearContents];
     [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
     success = [NSPasteboard.generalPasteboard setData:data forType:format];
 //#ifdef DEBUG
@@ -89,7 +90,6 @@ Value setData(const CallbackInfo &info) {
   }
   else
   {
-    //NSDictionary *dict = (__bridge NSString *)UTTypeCopyDeclaration(CFSTR(format));
 /*
 NSDictionary *dict = (__bridge NSString *)UTTypeCopyDeclaration(CFSTR(format));
 {
@@ -121,13 +121,17 @@ UTTypeTagSpecification =     {
     NSError *error;
     BOOL successWrite = [data writeToURL:tempFileUrl atomically:true];
  
+    [NSPasteboard.generalPasteboard clearContents];
     [NSPasteboard.generalPasteboard declareTypes:@[NSFilenamesPboardType] owner:nil];
-    success = [NSPasteboard.generalPasteboard writeObjects:@[ tempFileUrl ]];
+    [NSPasteboard.generalPasteboard setPropertyList:@[ tempFileUrl ] forType:NSFilenamesPboardType];
 //#ifdef DEBUG
     NSLog(@"writeDataToClipboard: %@", tempFilePath);
     NSLog(@"writeDataToClipboard: %@", tempFileUrl);
     NSLog(@"writeDataToClipboard: result1 = %i", successWrite);
-    NSLog(@"writeDataToClipboard: result2 = %i", success);
+    NSLog(@"writeDataToClipboard: result3 = %i", success);
+        NSDictionary *utiDict = (__bridge NSDictionary *)UTTypeCopyDeclaration(CFSTR(format));
+    NSLog(@"writeDataToClipboard: result4 = %@", utiDict);
+
 //#endif
   }
 
