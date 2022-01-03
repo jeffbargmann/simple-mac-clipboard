@@ -93,9 +93,9 @@ Value setData(const CallbackInfo &info) {
     NSImage *image = [[NSImage alloc] initWithData:data];
     if (image != nil)
     {
-      [NSPasteboard.generalPasteboar clearContents];
+      [NSPasteboard.generalPasteboard clearContents];
       NSArray *copiedObjects = [NSArray arrayWithObject:image];
-      success = [NSPasteboard.generalPasteboar writeObjects:copiedObjects];
+      success = [NSPasteboard.generalPasteboard writeObjects:copiedObjects];
       NSLog(@"writeImageToClipboard: %i", success);
     }
     else
