@@ -96,7 +96,9 @@ Value setData(const CallbackInfo &info) {
  
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
       [pboard clearContents];
-    [pboard writeObjects:@[tempFileUrl]];
+  NSPasteboardItem *pbitem = [[NSPasteboardItem alloc] init];
+   [pbitem setData:data forType:(__bridge NSString*)kUTTypeGIF];
+    [pboard writeObjects:@[pbitem]];
   }
   else if(true)
   {
