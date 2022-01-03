@@ -79,7 +79,7 @@ Value setData(const CallbackInfo &info) {
 
   BOOL success = false;
   BOOL isText = [format isEqualToString:@"public.utf8-plain-text"];
-  if(isText)
+  if(isText || true)
   {
     [NSPasteboard.generalPasteboard clearContents];
     [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
@@ -88,6 +88,7 @@ Value setData(const CallbackInfo &info) {
     NSLog(@"writeTextToClipboard: result = %i", success);
 //#endif
   }
+  
   else if(true)
   {
     //NSString *tempFilePath1 = @"/Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
