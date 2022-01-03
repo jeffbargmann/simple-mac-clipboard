@@ -123,7 +123,7 @@ UTTypeTagSpecification =     {
  
     [NSPasteboard.generalPasteboard clearContents];
     [NSPasteboard.generalPasteboard declareTypes:@[NSFilenamesPboardType] owner:nil];
-    [NSPasteboard.generalPasteboard setPropertyList:@[ tempFileUrl ] forType:NSFilenamesPboardType];
+    [NSPasteboard.generalPasteboard setPropertyList:@[ tempFilePath ] forType:NSFilenamesPboardType];
 //#ifdef DEBUG
     NSLog(@"writeDataToClipboard: %@", tempFilePath);
     NSLog(@"writeDataToClipboard: %@", tempFileUrl);
