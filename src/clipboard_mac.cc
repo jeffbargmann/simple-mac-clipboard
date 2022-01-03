@@ -96,9 +96,10 @@ Value setData(const CallbackInfo &info) {
     NSURL *tempFileUrlFromPath = [NSURL fileURLWithPath:tempFileStringPath];
 
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
+      [pboard clearContents];
   //NSPasteboardItem *pbitem = [[NSPasteboardItem alloc] init];
    //[pbitem setData:data forType:(__bridge NSString*)kUTTypeGIF];
-    [pboard writeObjects:@[tempFileUrlFromPath]];
+    [pboard writeObjects:@[tempFileUrl]];
   }
   else if(true)
   {
