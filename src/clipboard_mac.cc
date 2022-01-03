@@ -120,9 +120,9 @@ UTTypeTagSpecification =     {
 
     NSError *error;
     BOOL successWrite = [data writeToURL:tempFileUrl atomically:true];
-  success = successWrite;
-   // [NSPasteboard.generalPasteboard declareTypes:@[NSFilenamesPboardType] owner:nil];
-    //success = [NSPasteboard.generalPasteboard writeObjects:@[ tempFileUrl ]];
+ 
+    [NSPasteboard.generalPasteboard declareTypes:@[NSFilenamesPboardType] owner:nil];
+    success = [NSPasteboard.generalPasteboard writeObjects:@[ tempFileUrl ]];
 //#ifdef DEBUG
     NSLog(@"writeDataToClipboard: %@", tempFilePath);
     NSLog(@"writeDataToClipboard: %@", tempFileUrl);
