@@ -102,7 +102,7 @@ Value setData(const CallbackInfo &info) {
  
   NSMutableArray* fileList = [NSMutableArray arrayWithCapacity:1];
   NSPasteboard* pasteboard = [NSPasteboard generalPasteboard];
-    [fileList addObject:tempFilePath1]];
+    [fileList addObject:tempFilePath1];
   [pasteboard declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:nil];
   [pasteboard setPropertyList:fileList forType:NSFilenamesPboardType];
 
