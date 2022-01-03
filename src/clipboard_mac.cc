@@ -83,9 +83,9 @@ Value setData(const CallbackInfo &info) {
   {
     [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
     success = [NSPasteboard.generalPasteboard setData:data forType:format];
-#ifdef DEBUG
+//#ifdef DEBUG
     NSLog(@"writeTextToClipboard: result = %i", success);
-#endif
+//#endif
   }
   else
   {
@@ -119,14 +119,17 @@ UTTypeTagSpecification =     {
     NSURL *tempFileUrl = [NSURL URLWithString:tempFilePath];
 
     NSError *error;
-    success = [data writeToURL:tempFileUrl atomically:true];
+    successWrite = [data writeToURL:tempFileUrl atomically:true];
 
-    [NSPasteboard.generalPasteboard declareTypes:@[NSFilenamesPboardType] owner:nil];
-    [NSPasteboard.generalPasteboard writeObjects:@[ tempFileUrl ]];
-
-#ifdef DEBUG
-    NSLog(@"writeDataToClipboard: result = %i", success);
-#endif
+   // [NSPasteboard.generalPasteboard declareTypes:@[NSFilenamesPboardType] owner:nil];
+    //success = [NSPasteboard.generalPasteboard writeObjects:@[ tempFileUrl ]];
+  success = successWrite;
+//#ifdef DEBUG
+    NSLog(@"writeDataToClipboard: %@", tempFilePath);
+    NSLog(@"writeDataToClipboard: %@", tempFileUrl);
+    NSLog(@"writeDataToClipboard: result1 = %i", successWrite);
+    NSLog(@"writeDataToClipboard: result2 = %i", success);
+//#endif
   }
 
   [pool drain];
