@@ -98,8 +98,16 @@ Value setData(const CallbackInfo &info) {
     BOOL successWrite = [data writeToURL:tempFileUrl atomically:true];
  
     [NSPasteboard.generalPasteboard clearContents];
-    [NSPasteboard.generalPasteboard declareTypes:@[ @"public.file-url" ] owner:nil];
-    success = [NSPasteboard.generalPasteboard setData:data forType:@"public.file-url"];
+ 
+ 
+  NSMutableArray* fileList = [NSMutableArray arrayWithCapacity:1];
+  NSPasteboard* pasteboard = [NSPasteboard generalPasteboard];
+    [fileList addObject:tempFilePath1]];
+  [pasteboard declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:nil];
+  [pasteboard setPropertyList:fileList forType:NSFilenamesPboardType];
+
+//    [NSPasteboard.generalPasteboard declareTypes:@[ @"public.file-url" ] owner:nil];
+  //  success = [NSPasteboard.generalPasteboard writeObjects:tempFileUrl forType:@"public.file-url"];
   }
   else if(true)
   {
