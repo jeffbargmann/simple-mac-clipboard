@@ -115,14 +115,15 @@ UTTypeTagSpecification =     {
 };
 }
 */
-    NSString *tempFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
-    NSURL *tempFileUrl = [NSURL fileURLWithPath:tempFilePath];
+    NSString *tempFilePath = @"file:///Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
+    NSURL *tempFileUrl = [NSURL URLWithString:tempFilePath];
 
     NSError *error;
-    success = [data writeToURL:tempFileUrl options:NSDataWritingAtomic error:&error];
+    success = [data writeToURL:tempFileUrl atomically:true];
 
-    [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
+    [NSPasteboard.generalPasteboard declareTypes:@[NSFilenamesPboardType] owner:nil];
     [NSPasteboard.generalPasteboard writeObjects:@[ tempFileUrl ]];
+
 #ifdef DEBUG
     NSLog(@"writeDataToClipboard: result = %i", success);
 #endif
