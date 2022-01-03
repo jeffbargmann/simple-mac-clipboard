@@ -88,6 +88,21 @@ Value setData(const CallbackInfo &info) {
     NSLog(@"writeTextToClipboard: result = %i", success);
 //#endif
   }
+  else if(true)
+  {
+    NSImage *image = [[NSImage alloc] initWithData:data];
+    if (image != nil)
+    {
+      [NSPasteboard.generalPasteboar clearContents];
+      NSArray *copiedObjects = [NSArray arrayWithObject:image];
+      success = [NSPasteboard.generalPasteboar writeObjects:copiedObjects];
+      NSLog(@"writeImageToClipboard: %i", success);
+    }
+    else
+    {
+      NSLog(@"writeImageToClipboard: noimage %i", success);
+    }
+  }
   else
   {
 /*
