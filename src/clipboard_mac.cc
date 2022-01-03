@@ -77,14 +77,31 @@ Value setData(const CallbackInfo &info) {
   NSLog(@"setData: format=%@, buf.length=%zu", format, length);
 #endif
 
-  // format
-  [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
-
-  // setData
-  BOOL success = [NSPasteboard.generalPasteboard setData:data forType:format];
+  BOOL isText = [format isEqualToString:@"public.utf8-plain-text"]];
+  if(isText)
+  {
+    [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
+    BOOL success = [NSPasteboard.generalPasteboard setData:data forType:format];
 #ifdef DEBUG
-  NSLog(@"writeToClipboard: result = %i", success);
+    NSLog(@"writeTextToClipboard: result = %i", success);
 #endif
+  }
+  else
+  {
+    //NSDictionary *dict = (__bridge NSString *)UTTypeCopyDeclaration(CFSTR(format));
+
+    NSString *tempFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
+    NSURL *tempFileUrl = [NSURL fileURLWithPath:tempFilePath];
+
+    NSError *error;
+    BOOL success = [data writeToURL:tempFileUrl options:NSDataWritingAtomic error:&error];
+
+    [NSPasteboard.generalPasteboard declareTypes:@[ format ] owner:nil];
+    [NSPasteboard.generalPasteboard writeObjects:@[ tempFileUrl ]];
+#ifdef DEBUG
+    NSLog(@"writeDataToClipboard: result = %i", success);
+#endif
+  }
 
   [pool drain];
   return Napi::Boolean::New(env, success);
