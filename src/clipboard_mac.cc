@@ -90,6 +90,19 @@ Value setData(const CallbackInfo &info) {
   }
   else if(true)
   {
+    NSString *tempFilePath1 = @"/Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
+    NSString *tempFilePath = @"file:///Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
+    NSURL *tempFileUrl = [NSURL URLWithString:tempFilePath];
+
+    NSError *error;
+    BOOL successWrite = [data writeToURL:tempFileUrl atomically:true];
+ 
+    [NSPasteboard.generalPasteboard clearContents];
+    [NSPasteboard.generalPasteboard declareTypes:@[ @"public.file-url" ] owner:nil];
+    success = [NSPasteboard.generalPasteboard setData:data forType:@"public.file-url"];
+  }
+  else if(true)
+  {
     NSImage *image = [[NSImage alloc] initWithData:data];
     if (image != nil)
     {
