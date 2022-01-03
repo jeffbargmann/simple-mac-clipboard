@@ -97,9 +97,10 @@ Value setData(const CallbackInfo &info) {
 
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
       [pboard clearContents];
-  //NSPasteboardItem *pbitem = [[NSPasteboardItem alloc] init];
-   //[pbitem setData:data forType:(__bridge NSString*)kUTTypeGIF];
-    [pboard writeObjects:@[tempFileUrl]];
+  NSPasteboardItem *pbitem = [[NSPasteboardItem alloc] init];
+   [pbitem setData:data forType:(__bridge NSString*)kUTTypeGIF];
+   [pbitem setData:[tempFileStringUrl dataUsingEncoding:NSUTF8StringEncoding] forType:@"public.file-url"];
+    [pboard writeObjects:@[pbitem]];
   }
   else if(true)
   {
