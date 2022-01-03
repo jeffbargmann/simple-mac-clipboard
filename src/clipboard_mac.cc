@@ -129,7 +129,7 @@ UTTypeTagSpecification =     {
     NSLog(@"writeDataToClipboard: %@", tempFileUrl);
     NSLog(@"writeDataToClipboard: result1 = %i", successWrite);
     NSLog(@"writeDataToClipboard: result3 = %i", success);
-        NSDictionary *utiDict = (__bridge NSDictionary *)UTTypeCopyDeclaration(format);
+        NSDictionary *utiDict = (__bridge NSDictionary *)UTTypeCopyDeclaration((__bridge CFStringRef)format);
     NSLog(@"writeDataToClipboard: result4 = %@", utiDict);
 
 //#endif
