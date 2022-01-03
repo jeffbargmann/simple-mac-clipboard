@@ -115,6 +115,7 @@ UTTypeTagSpecification =     {
 };
 }
 */
+    NSString *tempFilePath1 = @"/Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
     NSString *tempFilePath = @"file:///Users/jeff/clipboard.gif";//[NSTemporaryDirectory() stringByAppendingPathComponent:@"clipboard.gif"];
     NSURL *tempFileUrl = [NSURL URLWithString:tempFilePath];
 
@@ -123,12 +124,12 @@ UTTypeTagSpecification =     {
  
     [NSPasteboard.generalPasteboard clearContents];
     [NSPasteboard.generalPasteboard declareTypes:@[NSFilenamesPboardType] owner:nil];
-    [NSPasteboard.generalPasteboard setPropertyList:@[ tempFilePath ] forType:NSFilenamesPboardType];
+    success = [NSPasteboard.generalPasteboard setPropertyList:@[ tempFilePath1 ] forType:NSFilenamesPboardType];
 //#ifdef DEBUG
-    NSLog(@"writeDataToClipboard: %@", tempFilePath);
+    NSLog(@"writeDataToClipboard: %@", tempFilePath1);
     NSLog(@"writeDataToClipboard: %@", tempFileUrl);
     NSLog(@"writeDataToClipboard: result1 = %i", successWrite);
-    NSLog(@"writeDataToClipboard: result3 = %i", success);
+    NSLog(@"writeDataToClipboard: result23 = %i", success);
         NSDictionary *utiDict = (__bridge NSDictionary *)UTTypeCopyDeclaration((__bridge CFStringRef)format);
     NSLog(@"writeDataToClipboard: result4 = %@", utiDict);
 
