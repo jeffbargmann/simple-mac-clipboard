@@ -100,12 +100,12 @@ Value setData(const CallbackInfo &info) {
     [NSPasteboard.generalPasteboard clearContents];
  
  
-  NSMutableArray* fileList = [NSMutableArray arrayWithCapacity:1];
+ // NSMutableArray* fileList = [NSMutableArray arrayWithCapacity:1];
   NSPasteboard* pasteboard = [NSPasteboard generalPasteboard];
-    [fileList addObject:tempFilePath1];
-  [pasteboard declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:nil];
-  [pasteboard setPropertyList:fileList forType:NSFilenamesPboardType];
-
+  //  [fileList addObject:tempFilePath1];
+  [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeFileURL] owner:nil];
+  //[pasteboard setPropertyList:fileList forType:NSPasteboardTypeFileURL];
+[tempFileUrl writeToPasteboard:pasteboard];
 //    [NSPasteboard.generalPasteboard declareTypes:@[ @"public.file-url" ] owner:nil];
   //  success = [NSPasteboard.generalPasteboard writeObjects:tempFileUrl forType:@"public.file-url"];
   }
