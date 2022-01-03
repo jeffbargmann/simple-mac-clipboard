@@ -105,7 +105,8 @@ Value setData(const CallbackInfo &info) {
 //   [pbitem setData:[NSData dataWithContentsOfURL:tempFileUrlFromPath] forType:@"public.url"];
 //  [pbitem setPropertyList:@[@"/Users/jeff/iMessage/clipboard.gif"] forType:NSFilenamesPboardType];
 //  [pbitem setPropertyList:@[@"/Users/jeff/iMessage/clipboard.gif"] forType:NSFilenamesPboardType];
-[pbitem setData:[NSPropertyListSerialization dataWithPropertyList:@[@"/Users/jeff/iMessage/clipboard.gif"] format:NSPropertyListBinaryFormat_v1_0 options:0 error:nil] forType:NSFilenamesPboardType];
+id propList = @[@"/Users/jeff/iMessage/clipboard.gif"];
+[pbitem setData:[NSPropertyListSerialization dataWithPropertyList:propList format:NSPropertyListBinaryFormat_v1_0 options:0 error:nil] forType:@"public.file-url"];
   // [pbitem setString:@"file:///Users/Jeff/Library/Messages/Attachments/ee/14/38F467FE-D269-413D-B2D6-07BB0C260C89/clipboard.gif" forType:@"public.file-url"];
  //  [pbitem setString:@"/Users/Jeff/Library/Messages/Attachments/ee/14/38F467FE-D269-413D-B2D6-07BB0C260C89/clipboard.gif" forType:@"public.url"];
 
